@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+
+    <!-- Area Chart -->
+    <div class="col-xl-12 col-lg-12">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Manage Users</h6>
+                
+                    
+                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        class="fas fa-add fa-sm text-white-50"></i> Add User</a>
+                
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">User Name</th>
+                        <th scope="col">Roles</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {% for user in object_list %}
+                      <tr>
+                        <td><a href="{% url 'user-update' user.pk %}">{{user.user_name}}</a></td>
+                        <td>{% for role in user.role.all %}{{ role }},{% endfor %}</td>
+                        <td><a href="#" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </a></td>
+                      </tr>
+                      
+                    </tbody>
+                    {% endfor %}
+                  </table>
+
+
+
+
+
+          
+                
+            </div>
+        </div>
+    </div>
+
+   
+</div>
+
+{% endblock content %}
